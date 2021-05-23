@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
-
 int main_exit;
 void menu();
 void menu2();
@@ -20,7 +18,7 @@ struct
 
     float taka;
 
-} use, upd, check, rem, myid, transaction;
+} use, check, rem, myid, transaction;
 
 void new_acc()
 {
@@ -78,7 +76,6 @@ void depo(void)
 
     while (fscanf(old, "%d %s %d %lld %f ", &use.id_no, use.name, &use.secu, &use.phone, &use.taka) != EOF)
     {
-
         if (use.id_no == myid.id_no)
         {
             test = 1;
@@ -322,7 +319,6 @@ void see(void)
             printf("\nID NO.:%d\nName:%s\nPIN:%d \nPhone number:%lld \nAmount deposited: BDT: %.2f \n\n", use.id_no, use.name, use.secu, use.phone, use.taka);
         }
     }
-
     fclose(ptr);
     if (test != 1)
     {
@@ -357,7 +353,6 @@ void see(void)
 
     else
     {
-
         system("cls");
         close();
     }
@@ -367,8 +362,8 @@ void close(void)
 {
     printf("\n\n\n\nProject By");
     printf("\nNur Hasan Masum");
-    printf("\nFardeen Amin Pranto");
-    printf("\nLamia Tabassum Tuba");
+    printf("\nFardeen Ameen Pranto");
+    printf("\nLamia Tabassum");
 }
 
 void menu(void)
@@ -386,7 +381,6 @@ void menu(void)
     case 1:
         new_acc();
         break;
-
     case 2:
         signin();
         break;
@@ -424,7 +418,16 @@ signin_again:
             }
 
             else
+            {
+                fclose(ptr);
                 printf("\n\nWrong Pin!!");
+                goto signin_again;
+            }
+        }
+        else
+        {
+            fclose(ptr);
+            printf("\n\nID NOT FOUND!!");
             goto signin_again;
         }
     }
@@ -444,14 +447,12 @@ void menu2(void)
     system("cls");
     switch (choice)
     {
-
     case 1:
         depo();
         break;
     case 2:
         withdraw();
         break;
-
     case 3:
         see();
         break;
